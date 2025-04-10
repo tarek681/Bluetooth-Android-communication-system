@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CommunicationActivity"
+    android:background="#5A5A5A">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/DeviceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="send trigger massage"/>
+
+    <Button
+        android:id="@+id/TriggerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_trigger_"
+        android:text=""
+        />
+    </LinearLayout>
+</LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/StatusLayout"
+        android:layout_width="397dp"
+        android:layout_height="247dp"
+        android:layout_above="@+id/EventLayout"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="0dp"
+            android:text="Status:"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/StatusTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/s"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="0dp"
+            android:text="contecting"
+
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/AnimationTv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/StatusTV"
+            android:text=""
+            android:background="@drawable/ic_loop"
+            android:textColor="@color/black"
+            android:textSize="40dp" />
+
+
+        <TextView
+            android:id="@+id/task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/AnimationTv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="0dp"
+
+            android:text="Task:"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/TaskTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/task"
+            android:layout_centerHorizontal="true"
+            android:text="NoTask"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/EventLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+
+            android:layout_marginBottom="0dp"
+            android:fillViewport="true"
+            android:keepScreenOn="true"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:background="#101617"
+            android:visibility="visible">
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/EventTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:keepScreenOn="true"
+                android:scrollbars="vertical"
+                android:text=""
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n"/>
+       </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="-1dp"
+            android:background="#713CEB"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+
+                android:text="   Event Logger "
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/eventClearBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/eventVisabilityBtn"
+                android:background="@drawable/ic_action_clear"
+                android:text=""
+                android:textColor="@color/white"
+                app:icon="@drawable/ic_action_clear" />
+
+            <Button
+                android:id="@+id/eventVisabilityBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="#713CEB"
+                android:text="-"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                app:icon="@drawable/ic_minimize" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

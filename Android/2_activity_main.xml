@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5A5A5A"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/Layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/TopTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:textColor="@color/purple_700"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/DeviceList"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+
+        android:layout_centerVertical="true"/>
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible"
+        >
+
+        <ImageView
+            android:id="@+id/info"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ic_bluetooth_info"/>
+
+
+        <TextView
+            android:layout_below="@+id/info"
+            android:id="@+id/DeviceNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/ToConnectAcrBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="open communication"
+            android:layout_below="@id/DeviceNameTV"
+            android:layout_centerHorizontal="true"
+            android:background="@color/white"/>
+    </RelativeLayout>
+</RelativeLayout>

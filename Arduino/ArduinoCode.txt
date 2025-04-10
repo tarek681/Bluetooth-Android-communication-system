@@ -1,0 +1,113 @@
+#include <SPI.h>
+#include <SD.h>
+#include <String.h>
+#include<SoftwareSerial.h>
+
+
+//define a Serial-Interface on pins 2 and 3
+const int TXD=3;
+const int RXD=2;
+SoftwareSerial BluetoothSerial(TXD, RXD);
+
+
+File myFile; 
+char Serialchar;
+char Serialchartemp;
+boolean Instialisation = false;
+boolean Isreded=false;
+
+
+void setup() {
+  
+  //Init Serial-Interfaces
+  Serial.begin(9600);
+  BluetoothSerial.begin(9600);
+  
+}
+
+void loop() {
+  
+   
+   if(!Instialisation){
+   IntSD();
+   }
+   
+
+//check the content of received data and send a response
+   if((BluetoothSerial.available()>0)){
+     delay(100);
+     while(BluetoothSerial.available()>0){
+      if((Serialchartemp=BluetoothSerial.read())!=47 && !Isreded){
+          Serialchar=(char)Serialchartemp;
+          Isreded =true;
+        }
+       }
+     Isreded= false;
+     if(Serialchar == 83){
+        SendeStatus();
+      }else if(Serialchar == 76) {
+        SendeLogfile();
+      }else if(Serialchar == 84){
+        BluetoothSerial.write("Trigger");
+      }else{BluetoothSerial.write("unbekannt");}
+     }
+  }
+
+
+//read Status-File and send it`s content 
+void SendeStatus(){
+    BluetoothSerial.write("Status");
+    delay(100);
+    myFile = SD.open("DevData.txt");
+    if (myFile) {
+    	// read from file.
+    	while (myFile.available()) {
+      	BluetoothSerial.write(myFile.read());
+    	}
+    // close the file:
+    myFile.close();
+    } else {
+    // if the file didn't open, print an error:
+    BluetoothSerial.println("error opening DevData");
+    }
+  return; 
+  }
+
+
+//read Logfile and send it`s content 
+void SendeLogfile(){
+     BluetoothSerial.write("Logfile");
+          delay(100);
+     myFile = SD.open("logdatei.txt");
+     if (myFile) {
+        while (myFile.available()) {
+          BluetoothSerial.write(myFile.read());
+        }
+        myFile.close();
+     } else {  
+      // if the file didn't open, print an error:
+      BluetoothSerial.println("error opening logdatei");
+     }
+     
+  }
+
+//try to initialize the sd-card
+void IntSD(){
+  
+    delay(30000);
+    Serial.print("Initializing SD card...");
+    
+    if (!SD.begin(4)) {
+    	BluetoothSerial.println("Erorr");
+     	Serial.println("Initialization failed!");
+    	while (1){
+    		if(BluetoothSerial.available()>0)
+    		BluetoothSerial.println("Erorr");
+     	}
+    }
+    
+    Instialisation = true;
+    BluetoothSerial.println("Trigger");
+    Serial.println("Trigger");
+    return;
+  }
